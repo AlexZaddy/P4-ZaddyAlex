@@ -21,6 +21,7 @@ let nbTournois = document.getElementById('quantity');
 let mail = document.getElementById('email');
 let modalBody = document.getElementsByClassName('modal-body');
 let form = document.getElementsByName('reserve');
+let modalClose = document.getElementsByClassName('close');
 
 
 
@@ -39,8 +40,11 @@ locaction.forEach(city => {
   city.addEventListener('click', function () { data.city = this.value })
 });
 
+modalClose[0].addEventListener('click', function () { modalbg.style.display = ""; })
 
-
+/**
+ * 
+ */
 function secondEtape() {
   modalBody[0].appendChild(document.createElement('aside'));
   modalBody[0].querySelector('aside').classList.add('tempo-text');
@@ -63,7 +67,8 @@ function secondEtape() {
   })
 
 }
-
+/**
+ *  */
 function validate(e) {
   e.preventDefault();
   if (data) {
@@ -76,7 +81,7 @@ function validate(e) {
     console.log(data);
 
     formData.forEach(element => {
-      if (element.querySelector('input').value === "") {
+      if (element.querySelector('input').value.trim() === "") {
         element.querySelector('input').style.border = "2px solid red";
         element.append(document.createElement('div'));
         element.querySelector('div').append(document.createElement('p'))
@@ -109,20 +114,20 @@ function validate(e) {
       formData[5].querySelector('p').style.color = 'red';
     }
 
-    if (birthdate.value == "") {
+    if (birthdate.value.trim() == "") {
       formData[3].querySelector('p').innerText = "Vous devez entrer votre date de naissance.";
 
     }
-    if (firstName.value == "" && firstName.value.length < 2) {
+    if (firstName.value.trim() == "" && firstName.value.length < 2) {
       formData[0].querySelector('p').innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     }
-    if (lastName.value == "" && lastName.value.length < 2) {
+    if (lastName.value.trim() == "" && lastName.value.length < 2) {
       formData[1].querySelector('p').innerText = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
     }
-    if (nbTournois.value == 0) {
+    if (nbTournois.value.trim() == 0) {
       formData[4].querySelector('p').innerText = "Vous devez entrer le nombre de tounois aux quelle vous déja participée";
     }
-    if (mail.value == "") {
+    if (mail.value.trim() == "") {
       formData[2].querySelector('p').innerText = "Entré un mail valide."
     }
   }
