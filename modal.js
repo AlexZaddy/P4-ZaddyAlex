@@ -43,7 +43,7 @@ locaction.forEach(city => {
 modalClose[0].addEventListener('click', function () { modalbg.style.display = ""; })
 
 /**
- * 
+va cree plusieur element et insere du text
  */
 function secondEtape() {
   modalBody[0].appendChild(document.createElement('aside'));
@@ -68,7 +68,8 @@ function secondEtape() {
 
 }
 /**
- *  */
+ Cette fonction va checker le si les conditon de validation son bonne et ren voyer des errue si elle ne le sont pas.
+ Elle aussin allper un autre fonction quand tout est bon */
 function validate(e) {
   e.preventDefault();
   if (data) {
